@@ -92,6 +92,7 @@ team-dev-standards/
 - 新增文件：先注册到 `SKILL.md` 索引，否则视为不存在。
 - 红线变更：须说明新增/删除的检查点，避免清单膨胀成口号。
 - 提交前必跑：`node scripts/check.mjs`（0 error 才算通过）。
+- CI：`.github/workflows/check.yml` 与本地跑同一个脚本，PR 必须为绿。
 - 本工程自身在 git 里，可 diff、可 review、可回滚。
 
 变更历史见 `CHANGELOG.md`。

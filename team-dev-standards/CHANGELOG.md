@@ -9,6 +9,13 @@ tldr: 记录合并、拍板与每版改动；只写结论与理由，不写过�
 
 # CHANGELOG
 
+## 2026-10-17 — v2.2 CI 与版本标签
+
+- 新增 `.github/workflows/check.yml`：push 到 `main`、PR、手动触发时运行机械校验；新增 skill 追加一行命令即可。
+- 打标签 `v2.1`（指向 `4f5c899`，含四协议、模板与机械校验），用于引用固定版本。
+- 未完成：`main` 分支保护。GitHub 保护规则只能通过 REST API 或网页设置，本机无任何 token（`GITHUB_TOKEN`、`GH_TOKEN`、凭据管理器均为空），SSH 密钥不能调用 API。此项待有凭据时一条命令完成。
+- 供应链说明：workflow 中的 action 使用 `@v4` 主版本便于维护；若要求严格锁定，应改为固定 commit SHA。
+
 ## 2026-10-17 — v2.1 机械校验与发布准备
 
 - 新增 `scripts/check.mjs`：把"可机械检查的红线"落成可执行门禁——元信息完整性、`SKILL.md` ≤100 行、`token_budget` ≥ 实测、§ 引用可解析、references/assets 已注册索引、`assets/` 路径存在、`last_verified` 超 90 天告警。零依赖，Node ≥18。

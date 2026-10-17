@@ -1,0 +1,31 @@
+name: check
+
+# 机械校验：每个 skill 自带的 scripts/check.mjs
+# 规则来源见 team-dev-standards/SKILL.md §维护规则 与 references/04-docs-system.md §3.7
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  mechanical-check:
+    name: 机械校验
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: team-dev-standards
+        run: node team-dev-standards/scripts/check.mjs
+
+      # 新增 skill 时在此追加一行：node <skill>/scripts/check.mjs

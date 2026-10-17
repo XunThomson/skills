@@ -6,6 +6,8 @@ skill 集合。每个子目录是一个自包含的 skill，入口为 `SKILL.md`
 |---|---|---|
 | `team-dev-standards/` | 组内统一开发规范与 Agent 开发标准 | `node team-dev-standards/scripts/check.mjs` |
 
+CI：`.github/workflows/check.yml` 在 push 到 `main`、PR、手动触发时跑上表命令；新增 skill 时追加一行。
+
 ## 约定
 
 - 一个 skill 一个目录，入口 `SKILL.md` 必须带 YAML frontmatter：`name`、`description`。
