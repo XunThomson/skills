@@ -16,6 +16,7 @@ tldr: 记录合并、拍板与每版改动；只写结论与理由，不写过�
 - 新增仓库根 `README.md` 与 `.gitignore`：`skills` 仓库作为集合的入口、目录约定与忽略规则。
 - 接入：`SKILL.md` 维护规则、`04-docs-system.md §3.7` 第 6 条、本 skill `README.md` 的结构与维护小节。
 - 拍板：仓库采用"一 skill 一目录"布局（`team-dev-standards/`），而不是把 skill 摊在仓库根——为后续新增 skill 留位置，避免以后搬家。
+- 修正：`09-execution-protocols.md` 的 `4.1` 被误写成 `####`（四级），与 `4.2`–`4.6` 不同级；成因是一次编辑被重复应用。`scripts/check.mjs` 因此新增"标题层级必须与编号匹配"检查，使这类错误可被发现而不是靠肉眼。
 
 ## 2026-10-17 — v2 补全与优化
 

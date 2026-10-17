@@ -53,8 +53,14 @@ for (const f of files) {
   const txt = readFileSync(f, 'utf8');
   const nums = new Set();
   for (const line of txt.split(/\r?\n/)) {
-    const m = /^#{2,3}\s+(\d+(?:\.\d+)?)[\s.．]/.exec(line);
-    if (m) nums.add(m[1]);
+    const m = /^(#{2,6})\s+(\d+(?:\.\d+)?)[\s.．]/.exec(line);
+    if (!m) continue;
+    nums.add(m[2]);
+    // 标题层级必须与编号一致：`N` → ##，`N.M` → ###（层级错乱会让章节"消失"）
+    const expected = 2 + (m[2].split('.').length - 1);
+    if (m[1].length !== expected) {
+      err(`${rel(f)}: 标题层级错乱 "§${m[2]}" 用了 ${m[1].length} 级，应为 ${expected} 级`);
+    }
   }
   headings.set(f, nums);
 
