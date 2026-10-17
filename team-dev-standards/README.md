@@ -3,7 +3,7 @@ status: active
 last_verified: 2026-10-17
 owner: @team
 scope: skill 工程说明与使用入口
-token_budget: 2100
+token_budget: 2500
 tldr: 定位、用法、设计约束、文件清单与维护规则；机械校验由 scripts/check.mjs 落地；变更历史见 CHANGELOG.md。
 ---
 
@@ -11,7 +11,7 @@ tldr: 定位、用法、设计约束、文件清单与维护规则；机械校�
 
 组内统一开发规范，同时是 Agent 的开发标准。形态是一个 skill 工程：**一个入口 + 9 个 references + 7 个 assets + 1 个校验脚本**。
 
-- 版本：2.1 ｜ 更新：2026-10-17（历史见 `CHANGELOG.md`）
+- 版本：2.2 ｜ 更新：2026-10-17（历史见 `CHANGELOG.md`）
 - 适用：组内所有项目、所有语言、所有 Agent 与人类开发者
 - 许可：MIT（见仓库根 `LICENSE`）
 
@@ -85,6 +85,23 @@ team-dev-standards/
 | `07-limited-info.md` | 信息不足时 | 什么时候算够、怎么出 draft |
 | `08-verification-and-retro.md` | 宣布完成前 | 怎么验证、出事怎么复盘 |
 | `09-execution-protocols.md` | 任何时候 | 怎么表达、怎么容错、怎么不返工 |
+
+## 安装到 DSH
+
+DSH 从用户级 `~/.dsh/skills/<name>/` 或项目级 `.agents/skills/<name>/` 发现 skill：入口为 `SKILL.md`，frontmatter 必须有 `name`（kebab-case）与非空 `description`。
+
+```powershell
+# 安装 / 同步（复制，不要用指向仓库的 junction）
+$src = 'F:\Develop\agent\skills\team-dev-standards'
+$dst = "$env:USERPROFILE\.dsh\skills\team-dev-standards"
+Remove-Item $dst -Recurse -Force -ErrorAction SilentlyContinue
+Copy-Item $src $dst -Recurse
+node "$dst\scripts\check.mjs"
+```
+
+- 为什么复制而不是软链：DSH 经沙箱 FS 读取 skill，junction 指向工程外路径时，在其他项目的受限会话里可能被拒绝。
+- 生效范围：新会话直接可用；已运行会话的 skill 目录在启动时固化，需新会话刷新摘要。
+- 升级：仓库改动后重跑上面四行；`node "$dst\scripts\check.mjs"` 会校验安装副本本身。
 
 ## 维护
 

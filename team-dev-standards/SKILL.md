@@ -7,7 +7,7 @@ license: MIT
 <!--
 status: active
 last_verified: 2026-10-17
-version: 2
+version: 2.2
 owner: @team
 scope: 组内通用开发规范 + 有限信息自主决策 + 执行协议
 token_budget: 2100

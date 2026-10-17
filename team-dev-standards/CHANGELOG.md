@@ -3,7 +3,7 @@ status: active
 last_verified: 2026-10-17
 owner: @team
 scope: skill 变更日志
-token_budget: 2400
+token_budget: 2600
 tldr: 记录合并、拍板与每版改动；只写结论与理由，不写过程。
 ---
 
@@ -17,6 +17,8 @@ tldr: 记录合并、拍板与每版改动；只写结论与理由，不写过�
   - 凭据来源是 Windows 凭据管理器中的 `git:https://github.com`；此前我判断"本机无任何凭据"是错的，已纠正。
   - 未启用"必须 PR + 批准"：单人仓库无法批准自己的 PR，启用会让所有改动卡死。需要多人协作时再放开。
 - 供应链说明：workflow 中的 action 使用 `@v4` 主版本便于维护；若要求严格锁定，应改为固定 commit SHA。
+- 安装：已复制到 `~/.dsh/skills/team-dev-standards`（20 文件、哈希全等、安装副本自检 0 error），旧 2026-09-12 单文件版备份至 `~/.dsh/skills-backup/team-dev-standards-2026-09-12`；安装与同步步骤写入 skill `README.md`。
+- 版本号对齐：`SKILL.md` 的 `version` 由 `2` 改为 `2.2`，与标签和 `README.md` 一致。
 
 ## 2026-10-17 — v2.1 机械校验与发布准备
 
