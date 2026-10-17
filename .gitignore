@@ -1,0 +1,17 @@
+# 本仓库根目录
+/.git/
+node_modules/
+package-lock.json
+
+# 编辑器与系统
+.DS_Store
+Thumbs.db
+desktop.ini
+.idea/
+.vscode/
+*.swp
+
+# 本地草稿与日志
+*.log
+*.tmp
+.draft/
