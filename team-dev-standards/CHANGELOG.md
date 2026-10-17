@@ -3,7 +3,7 @@ status: active
 last_verified: 2026-10-17
 owner: @team
 scope: skill 变更日志
-token_budget: 2100
+token_budget: 2400
 tldr: 记录合并、拍板与每版改动；只写结论与理由，不写过程。
 ---
 
